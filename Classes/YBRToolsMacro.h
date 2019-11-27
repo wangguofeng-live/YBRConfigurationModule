@@ -62,11 +62,11 @@
 //模拟器
 #endif
 
-//开发的时候打印，但是发布的时候不打印的NSLog
+//自定义打印宏
 #ifdef DEBUG
-#define NSLog(...) NSLog(@"%s 第%d行 \n %@\n\n",__func__,__LINE__,[NSString stringWithFormat:__VA_ARGS__])
+#define DLog(fmt, ...) NSLog((@"[文件名:%s]\n" "[函数名:%s]\n" "[行号:%d] \n" fmt), __FILE__, __FUNCTION__, __LINE__, ##__VA_ARGS__);
 #else
-#define NSLog(...)
+#define DLog(...);
 #endif
 
 //颜色
